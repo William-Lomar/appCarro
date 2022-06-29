@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+a{
+    color: black ;
+    text-decoration: none;
+}
+
+
+.lista_carros{
+    width: 60%;
+    margin: 20px auto;
+    display: block;
+}
+
+
+.lista_carros a{
+    color: black;
+    text-decoration: none;
+}
+
+.lista_carros button{
+    float: right;
+    margin: 0 10px;
+}
+
+.log{
+    margin: 0 20px;
+}
+
+.log button{
+    float: right;
+    margin: 0 20px;
+}
+
+.log h2{
+    margin: 20px;
+}

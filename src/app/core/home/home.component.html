@@ -1,0 +1,21 @@
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let carro of carros">
+            <th scope="row">{{carro.id}}</th>
+            <td>{{carro.placa}}</td>
+            <td>{{carro.marca}}</td>       
+            <td><a [routerLink]="'/log/'+carro.id">Visualizar folha de registro</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

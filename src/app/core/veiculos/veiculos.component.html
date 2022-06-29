@@ -1,0 +1,36 @@
+<div class="lista_carros">
+    <form class="cadastro">
+        <h1>Cadastrar Veículo</h1>
+        <div class="mb-3">
+            <label for="placa" class="form-label">Placa</label>
+            <input required type="text" class="form-control" id="placa" name="placa">
+        </div>
+        <div class="mb-3">
+            <label for="marca" class="form-label">Marca</label>
+            <input required type="text" class="form-control" id="marca" name="marca">
+        </div>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+    </form>
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Marca</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let carro of carros">
+            <th scope="row">{{carro.id}}</th>
+            <td>{{carro.placa}}</td>
+            <td>{{carro.marca}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" [routerLink]="'/editar/'+carro.id">Editar</button>
+                <button (click)="excluirCarro(carro.id)" type="button" class="btn btn-danger">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>

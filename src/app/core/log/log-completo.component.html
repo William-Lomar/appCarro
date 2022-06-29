@@ -1,0 +1,25 @@
+<div class="log">
+    <h2>Log do {{ carro[0].placa }} - {{ carro[0].marca }}</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Data e Hora</th>
+                <th scope="col">Km inicial</th>
+                <th scope="col">Km final</th>
+                <th scope="col">Motorista</th>
+                <th scope="col">Objetivo</th>
+                <th scope="col">Observação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let log of logs">
+                <td>{{log.data}}</td>
+                <td>{{log.km_inicial}}</td>
+                <td>{{log.km_final}}</td>
+                <td>{{log.motorista}}</td>
+                <td>{{log.objetivo}}</td>
+                <td>{{log.obs}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
