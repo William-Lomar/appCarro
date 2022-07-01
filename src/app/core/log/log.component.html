@@ -8,7 +8,7 @@
             <th scope="col">Km inicial</th>
             <th scope="col">Km final</th>
             <th scope="col">Motorista</th>
-            <th scope="col">Objetivo</th>
+            <th scope="col">Objetivo</th> 
             <th scope="col">Observação</th>
         </tr>
     </thead>
@@ -26,25 +26,25 @@
 
     <form class="row g-3">
         <div class="col-auto">
-            <input required name='data' type="text" class="form-control" id="data" placeholder="Data e Hora">
+            <input [(ngModel)]="logCadastro.data" required name='data' type="text" class="form-control" id="data" placeholder="Data e Hora">
         </div>
         <div class="col-auto">
-            <input required name='km_inicial' type="text" class="form-control" id="km_inicial" placeholder="Km inicial">
+            <input [(ngModel)]="logCadastro.km_inicial" required name='km_inicial' type="number" class="form-control" id="km_inicial" placeholder="Km inicial">
         </div>
         <div class="col-auto">
-            <input required name='km_final' type="text" class="form-control" id="km_final" placeholder="Km final">
+            <input [(ngModel)]="logCadastro.km_final" required name='km_final' type="number" class="form-control" id="km_final" placeholder="Km final">
         </div>
         <div class="col-auto">
-            <input required name='motorista' type="text" class="form-control" id="motorista" placeholder="Motorista">
+            <input [(ngModel)]="logCadastro.motorista" required name='motorista' type="text" class="form-control" id="motorista" placeholder="Motorista">
         </div>
         <div class="col-auto">
-            <input required name='objetivo' type="text" class="form-control" id="objetivo" placeholder="Objetivo">
+            <input [(ngModel)]="logCadastro.objetivo" required name='objetivo' type="text" class="form-control" id="objetivo" placeholder="Objetivo">
         </div>
         <div class="col-auto">
-            <input name='obs' type="text" class="form-control" id="obs" placeholder="Observação">
+            <input [(ngModel)]="logCadastro.obs" name='obs' type="text" class="form-control" id="obs" placeholder="Observação">
         </div>
         <div class="col">
-            <button type="submit" class="btn btn-primary mb-3">Adicionar registro</button>
+            <button (click)="cadastrarLog()" type="submit" class="btn btn-primary mb-3">Adicionar registro</button>
             <button type="submit" class="btn btn-secondary mb-3" [routerLink]="'/logCompleto/'+id">Visualizar log completo</button>
         </div>
     </form>

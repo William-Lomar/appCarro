@@ -1,2 +1,2 @@
-Preparar requisições para o back-end
-Fazer o back-end com express
+Tratar ids únicos dos objetos
+Colocar alerts de confirmação e resultados da requisição

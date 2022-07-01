@@ -28,15 +28,20 @@ export class VeiculosService{
         return this.httpClient.get<LogInterface[]>(this.apiUrl+'logCompleto/'+id);
     }
 
-    cadastrarVeiculo(){
-
+    cadastrarVeiculo(carro:VeiculoInterface):Observable<object>{
+        return this.httpClient.post<object>(this.apiUrl+'cadastrarVeiculo',carro);
     }
 
-    atualizarVeiculo(){
-
+    atualizarVeiculo(carro:VeiculoInterface):Observable<object>{
+        return this.httpClient.post<object>(this.apiUrl+'atualizar',carro);
     }
 
     excluirVeiculo(id:number):Observable<object>{
         return this.httpClient.delete<object>(this.apiUrl+'deletarCarro/'+id);
     }
+
+    cadastrarLog(log:LogInterface):Observable<object>{
+        return this.httpClient.post<object>(this.apiUrl+'cadastrarLog',log);
+    }
+
 }

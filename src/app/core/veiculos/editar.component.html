@@ -3,13 +3,13 @@
         <h1>Editar Veículo</h1>
         <div class="mb-3">
             <label for="placa" class="form-label">Placa</label>
-            <input name='placa' type="text" class="form-control" id="placa">
+            <input [(ngModel)]="carro[0].placa" name='placa' type="text" class="form-control" id="placa">
         </div>
         <div class="mb-3">
             <label for="marca" class="form-label">Marca</label>
-            <input name='marca' type="text" class="form-control" id="marca">
+            <input [(ngModel)]="carro[0].marca" name='marca' type="text" class="form-control" id="marca">
         </div>
-        <button type="button" class="btn btn-primary">Atualizar</button>
-        <button type="button" class="btn btn-secondary">Visualizar Folha de Registro</button>
+        <button (click)="atualizar()" type="button" class="btn btn-primary">Atualizar</button>
+        <button [routerLink]="'/log/'+carro[0].id" type="button" class="btn btn-secondary">Visualizar Folha de Registro</button>
     </form>
 <div>

@@ -1,9 +1,9 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { EditarComponent } from "./editar.component";
 import { VeiculosComponent } from "./veiculos.component";
-
 
 @NgModule({
     declarations:[
@@ -12,6 +12,7 @@ import { VeiculosComponent } from "./veiculos.component";
     ],
     imports:[
         CommonModule,
+        FormsModule,
         RouterModule.forChild([
             {
             path: 'veiculos',

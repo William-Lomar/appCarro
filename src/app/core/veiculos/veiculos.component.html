@@ -3,13 +3,13 @@
         <h1>Cadastrar Veículo</h1>
         <div class="mb-3">
             <label for="placa" class="form-label">Placa</label>
-            <input required type="text" class="form-control" id="placa" name="placa">
+            <input [(ngModel)]="carroCadastro.placa" required type="text" class="form-control" id="placa" name="placa">
         </div>
         <div class="mb-3">
             <label for="marca" class="form-label">Marca</label>
-            <input required type="text" class="form-control" id="marca" name="marca">
+            <input [(ngModel)]="carroCadastro.marca"  required type="text" class="form-control" id="marca" name="marca">
         </div>
-        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <button (click)="cadastrarCarro()" type="submit" class="btn btn-success">Cadastrar</button>
     </form>
 
     <table class="table">
