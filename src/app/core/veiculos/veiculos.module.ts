@@ -16,11 +16,11 @@ import { VeiculosComponent } from "./veiculos.component";
         ReactiveFormsModule,
         RouterModule.forChild([
             {
-            path: 'veiculos',
+            path: '',
             component: VeiculosComponent
             },
             {
-                path:'editar/:id',
+                path:':id',
                 component: EditarComponent
             }
         ])

@@ -4,13 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppComponent } from './app.component';
-import { ErroModule } from './core/erro/erro.module';
+import { ErroComponent } from './core/erro/erro.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
-import { HomeModule } from './core/home/home.module';
-import { LogModule } from './core/log/log.module';
 import { TestesModule } from './core/testes/testes.module';
-import { VeiculosModule } from './core/veiculos/veiculos.module';
 import { AlertModalComponent } from './shared/alerts/alert-modal.component';
 
 @NgModule({
@@ -23,19 +20,25 @@ import { AlertModalComponent } from './shared/alerts/alert-modal.component';
   imports: [
     ModalModule.forRoot(),
     BrowserModule,
-    HomeModule,
-    VeiculosModule,
     HttpClientModule,
     TestesModule,
-    LogModule,
     RouterModule.forRoot([
       {
         path:'', // Raiz do projeto
         redirectTo: 'home',
         pathMatch: 'full'
+      },{
+        path:'home',loadChildren: ()=>import('./core/home/home.module').then(m => m.HomeModule)
+      },{
+        path:'veiculos',loadChildren: ()=>import('./core/veiculos/veiculos.module').then(m => m.VeiculosModule)
+      },
+      {
+        path:'log',loadChildren: ()=>import('./core/log/log.module').then(m => m.LogModule)
+      },
+      {
+          path: '**',component:ErroComponent
       }
-    ]),
-    ErroModule, // Erro module deve ser importado por ultimo para funcionar 
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -27,7 +27,7 @@
             <td>{{carro.placa}}</td>
             <td>{{carro.marca}}</td>
             <td>
-                <button type="button" class="btn btn-primary" [routerLink]="'/editar/'+carro.id">Editar</button>
+                <button type="button" class="btn btn-primary" [routerLink]="'/veiculos/'+carro.id">Editar</button>
                 <button (click)="confirmExcluir(carro.id)" type="button" class="btn btn-danger">Excluir</button>
             </td>
         </tr>

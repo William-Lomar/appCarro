@@ -15,10 +15,10 @@ import { LogComponent } from "./log.component";
         FormsModule,
         RouterModule.forChild([
             {
-            path: 'log/:id',component:LogComponent
+            path: ':id',component:LogComponent
         },
         {
-            path: 'logCompleto/:id',component:logCompletoComponent
+            path: 'completo/:id',component:logCompletoComponent
         }
     ])
     ]

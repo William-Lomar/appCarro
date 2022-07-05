@@ -18,7 +18,7 @@
           </a>
           <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink" style="">
             <li *ngFor="let carro of carros">
-              <a [routerLink]="'/editar/'+carro.id"class="dropdown-item" role="button">{{carro.marca}} - {{carro.placa}}</a>
+              <a [routerLink]="'/veiculos/'+carro.id"class="dropdown-item" role="button">{{carro.marca}} - {{carro.placa}}</a>
             </li>
           </ul>
         </div>
