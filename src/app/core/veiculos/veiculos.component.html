@@ -1,13 +1,13 @@
 <div class="lista_carros">
-    <form class="cadastro">
+    <form class="cadastro" [formGroup]="userForm">
         <h1>Cadastrar Veículo</h1>
         <div class="mb-3">
             <label for="placa" class="form-label">Placa</label>
-            <input [(ngModel)]="carroCadastro.placa" required type="text" class="form-control" id="placa" name="placa">
+            <input required type="text" class="form-control" id="placa" formControlName="placa">
         </div>
         <div class="mb-3">
             <label for="marca" class="form-label">Marca</label>
-            <input [(ngModel)]="carroCadastro.marca"  required type="text" class="form-control" id="marca" name="marca">
+            <input required type="text" class="form-control" id="marca" formControlName="marca">
         </div>
         <button (click)="cadastrarCarro()" type="submit" class="btn btn-success">Cadastrar</button>
     </form>
@@ -28,9 +28,10 @@
             <td>{{carro.marca}}</td>
             <td>
                 <button type="button" class="btn btn-primary" [routerLink]="'/editar/'+carro.id">Editar</button>
-                <button (click)="excluirCarro(carro.id)" type="button" class="btn btn-danger">Excluir</button>
+                <button (click)="confirmExcluir(carro.id)" type="button" class="btn btn-danger">Excluir</button>
             </td>
         </tr>
     </tbody>
     </table>
 </div>
+

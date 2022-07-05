@@ -13,7 +13,7 @@ export class logCompletoComponent implements OnInit{
 
     id:number = 0;
 
-    carro:VeiculoInterface[] = []; 
+    carro!:VeiculoInterface; 
 
     logs: LogInterface[] = [];
 
@@ -22,7 +22,7 @@ export class logCompletoComponent implements OnInit{
 
         this.veiculoService.getVeiculoId(this.id).subscribe({
             next: (retorno)=>{
-                this.carro = retorno;
+                this.carro = retorno[0];
             },error: (erro)=>{
                 console.log(erro);
             }

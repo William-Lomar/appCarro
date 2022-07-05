@@ -11,7 +11,7 @@ export class LogComponent implements OnInit{
     constructor(private veiculoService:VeiculosService, private activatedRoute:ActivatedRoute){}
     id:number = 0;
 
-    carro:VeiculoInterface[] = []; 
+    carro!:VeiculoInterface; 
 
     logs: LogInterface[] = [];
 
@@ -37,7 +37,7 @@ export class LogComponent implements OnInit{
     getCarro(){
         this.veiculoService.getVeiculoId(this.id).subscribe({
             next: (retorno)=>{
-                this.carro = retorno;
+                this.carro = retorno[0];
             },error: (erro)=>{
                 console.log(erro);
             }

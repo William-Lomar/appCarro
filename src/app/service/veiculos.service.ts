@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { VeiculoInterface } from "../shared/interfaces/veiculo.interface";
 import { LogInterface } from "../shared/interfaces/log.interface";
@@ -8,9 +8,16 @@ import { LogInterface } from "../shared/interfaces/log.interface";
     providedIn:'root'
 })
 export class VeiculosService{
+    private apiUrl: string = 'http://localhost:3100/api/';
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':'application/json', 
+        })
+    }
+
     constructor(private httpClient:HttpClient){}
 
-    private apiUrl: string = 'http://localhost:3100/api/';
+    
 
     getVeiculos():Observable<VeiculoInterface[]>{
         return this.httpClient.get<VeiculoInterface[]>(this.apiUrl+'veiculos');
@@ -42,6 +49,10 @@ export class VeiculosService{
 
     cadastrarLog(log:LogInterface):Observable<object>{
         return this.httpClient.post<object>(this.apiUrl+'cadastrarLog',log);
+    }
+
+    testesPython():Observable<any>{
+        return this.httpClient.get<any>('http://localhost:8000/');
     }
 
 }

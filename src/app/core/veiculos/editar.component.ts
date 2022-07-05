@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { AlertModalService } from "src/app/service/alert-model.service";
 import { VeiculosService } from "src/app/service/veiculos.service";
 import { VeiculoInterface } from "src/app/shared/interfaces/veiculo.interface";
 
@@ -8,18 +9,25 @@ import { VeiculoInterface } from "src/app/shared/interfaces/veiculo.interface";
 })
 export class EditarComponent implements OnInit{
 
-    carro:VeiculoInterface[] = [];
+    carro!:VeiculoInterface;
 
     id:number = 0;
 
-    constructor(private veiculosService:VeiculosService, private activedRoute:ActivatedRoute){}
+    constructor(private veiculosService:VeiculosService, private activedRoute:ActivatedRoute, private alertService:AlertModalService){}
     
     ngOnInit(): void {
-        this.id = +this.activedRoute.snapshot.paramMap.get('id')!;
+        this.activedRoute.params.subscribe(
+            (params:any)=>{
+                this.id = params['id']
+                this.getVeiculo()
+            }
+        )
+    }
 
+    getVeiculo(){
         this.veiculosService.getVeiculoId(this.id).subscribe({
             next:(carro)=>{
-                this.carro = carro;
+                this.carro = carro[0];
             },error:(erro)=>{
                 console.log(erro)
             }
@@ -27,13 +35,19 @@ export class EditarComponent implements OnInit{
     }
 
     atualizar(){
-        this.veiculosService.atualizarVeiculo(this.carro[0]).subscribe({
+        this.veiculosService.atualizarVeiculo(this.carro).subscribe({
             next:(results)=>{
                 console.log(results);
             },error:(erro)=>{
                 console.log(erro);
+            },complete:()=>{
+                this.alertService.showAlert({
+                    type:'success',
+                    message:"Veículo atualizado com sucesso!"
+                })
             }
         })
     }
 
 }
+

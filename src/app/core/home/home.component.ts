@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { VeiculosService } from "../../service/veiculos.service";
 import { VeiculoInterface } from "src/app/shared/interfaces/veiculo.interface";
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { AlertModalService } from "src/app/service/alert-model.service";
 
 @Component({
     templateUrl: './home.component.html'
@@ -8,8 +10,13 @@ import { VeiculoInterface } from "src/app/shared/interfaces/veiculo.interface";
 
 export class HomeComponent implements OnInit{
     carros: VeiculoInterface[] = [];
+    bsModalRef!: BsModalRef; 
 
-    constructor(private veiculoService:VeiculosService){}
+    constructor(
+        private veiculoService:VeiculosService,
+        private modalService:BsModalService,
+        private alertService:AlertModalService
+        ){}
 
     ngOnInit(): void {
         this.veiculoService.getVeiculos().subscribe({
@@ -17,9 +24,12 @@ export class HomeComponent implements OnInit{
                 this.carros = retorno;
             },
             error: (erro)=>{
-                console.log(erro)
+                console.log(erro);
+                this.alertService.showAlert({
+                    type:'danger',
+                    message:"Erro ao conectar ao back-end!!"
+                });
             }
         })
     }
-
 }
