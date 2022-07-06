@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -9,18 +9,29 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { TestesModule } from './core/testes/testes.module';
 import { AlertModalComponent } from './shared/alerts/alert-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoadingComponent } from './shared/componentes/loading.component';
+import { LoadingInterceptor } from './service/interceptor.service';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AlertModalComponent
+    LoginComponent,
+    AlertModalComponent,
+    ErroComponent,
+    LoadingComponent
     ],
   imports: [
+    MatProgressSpinnerModule,
     ModalModule.forRoot(),
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     TestesModule,
     RouterModule.forRoot([
       {
@@ -36,11 +47,21 @@ import { AlertModalComponent } from './shared/alerts/alert-modal.component';
         path:'log',loadChildren: ()=>import('./core/log/log.module').then(m => m.LogModule)
       },
       {
+        path:'login',component:LoginComponent
+      },
+      {
           path: '**',component:ErroComponent
       }
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:LoadingInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents:[
     AlertModalComponent

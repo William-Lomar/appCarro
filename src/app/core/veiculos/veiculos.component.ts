@@ -5,6 +5,7 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { EMPTY, Subject, switchMap, take } from "rxjs";
 import { AlertModalService } from "src/app/service/alert-model.service";
 import { VeiculosService } from "src/app/service/veiculos.service";
+import { ConfirmComponent } from "src/app/shared/alerts/confirm.component";
 import { VeiculoInterface } from "src/app/shared/interfaces/veiculo.interface";
 
 @Component({
@@ -20,7 +21,8 @@ export class VeiculosComponent implements OnInit{
           private fb:FormBuilder,
           private router:Router,
           private alertService:AlertModalService,
-          private modalService:BsModalService){
+          private modalService:BsModalService,
+          ){
         this.userForm = this.fb.group({
             id:0,
             marca:'',
@@ -60,11 +62,12 @@ export class VeiculosComponent implements OnInit{
     }
 
     confirmExcluir(id:number){
-        const result$ = this.alertService.confirmAlert();
-        result$.asObservable().pipe(
-            take(1),
-            switchMap(async (result) => result ? this.ExcluirCarro(id) : EMPTY)
-        ).subscribe()
+        const result$ = this.alertService.confirmAlert(); 
+        result$.subscribe((result)=>{
+            if(result){
+                this.ExcluirCarro(id)
+            }
+        })
     }
 
     ExcluirCarro(id:number){

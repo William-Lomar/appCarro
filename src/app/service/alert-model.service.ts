@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { AlertModalComponent } from "../shared/alerts/alert-modal.component";
 import { ConfirmComponent } from "../shared/alerts/confirm.component";
@@ -21,7 +21,7 @@ export class AlertModalService{
 
     confirmAlert(){
         this.bsModalRef = this.modalService.show(ConfirmComponent);
-        return (<ConfirmComponent>this.bsModalRef.content).confirmResults;
+        return (<ConfirmComponent>this.bsModalRef.content).confirmResults; 
     }
 
 

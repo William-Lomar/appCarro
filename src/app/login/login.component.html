@@ -1,0 +1,25 @@
+<div class="form-signin login" method="post">
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Gestão de Veículos</h1>
+    <p>Faça login em seu sistema</p>
+  </div>
+
+  <div class="form-label-group">
+    <input [(ngModel)]="usuario.nome" type="text" class="form-control" placeholder="Usuario" required autofocus>
+    <label for="inputEmail">Usuário</label>
+  </div>
+
+  <div class="form-label-group">
+    <input [(ngModel)]="usuario.senha" type="password" class="form-control" placeholder="Senha" required>
+    <label for="inputPassword">Senha</label>
+  </div>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me" name="lembrar"> Lembrar senha
+    </label>
+  </div>
+  <button (click)="logar()" class="btn btn-lg btn-primary btn-block" type="submit" name="enviar">Enviar</button>
+  <p class="mt-5 mb-3 text-muted text-center">&copy;DoubleSix - 2022</p>
+</div>
+

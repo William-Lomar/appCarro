@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~font-awesome/css/font-awesome.min.css";
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 a{
     color: black ;
     text-decoration: none;
@@ -36,3 +39,5 @@ a{
 .log h2{
     margin: 20px;
 }
+
+

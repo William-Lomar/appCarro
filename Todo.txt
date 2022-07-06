@@ -1,2 +1,1 @@
-Tratar ids únicos dos objetos
-
+Aplicar guardsRouter 

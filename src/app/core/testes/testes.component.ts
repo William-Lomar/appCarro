@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Input } from "@angular/core";
+import { finalize, tap } from "rxjs";
 import { VeiculosService } from "src/app/service/veiculos.service";
 
 @Component({
@@ -12,6 +13,37 @@ export class TestesComponent{
     }
 
     resultadoApiPython = '';
+
+
+    testePipe(){ // Pipe Prepara o Observable para mais funções ou tarefas quando for realizada um subscription / examples: map, filter ... 
+        this.veiculoService.getVeiculos().pipe(
+            tap(
+                {
+                    next:(value)=>{
+                        console.log(value)
+                    },error:()=>{
+
+                    },complete:()=>{
+
+                    }
+                }
+            ),
+            finalize(
+                ()=>{
+                    console.log("finalizei minha requisição")
+                }
+            )
+        ).subscribe({
+            next:(value)=>{
+                //console.log(value)
+            },error:()=>{
+                console.log("Ocorreu um erro")
+            },complete:()=>{
+                console.log("requisição realizada com sucesso");
+            }
+        })
+        console.log("testando!");
+    }
 
     testesApiPython(){
         this.veiculoService.testesPython().subscribe({
