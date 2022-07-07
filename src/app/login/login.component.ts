@@ -21,7 +21,7 @@ export class LoginComponent{
     ){} 
 
     logar(){
-        if( this.authService.fazerLogin(this.usuario)){
+        if(this.authService.fazerLogin(this.usuario)){
             this.router.navigate(["/home"]);
         }else{
             console.log("Usuario ou senha incorretos");

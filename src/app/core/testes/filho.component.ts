@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { TestesService } from "src/app/service/testes.service";
 
 
 @Component({
@@ -8,7 +9,9 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 export class FilhoComponent implements OnInit{
     @Output() testes = new EventEmitter;
 
-    constructor(){}
+    constructor(private testeService:TestesService){}
+
+    teste = this.testeService.valorTeste;
 
     ngOnInit(): void {
         console.log("Filho instanciado")
@@ -18,4 +21,13 @@ export class FilhoComponent implements OnInit{
         console.log('Clicou no filho');
         this.testes.emit("Passando informações para o pai");
     }
+
+    atualizarValor(){
+        this.testeService.valorTeste = this.teste;
+    }
+
+    pegarValor(){
+        this.teste =  this.testeService.valorTeste;
+    }
+
 }

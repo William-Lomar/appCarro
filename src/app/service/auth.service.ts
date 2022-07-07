@@ -8,15 +8,22 @@ import { Usuario } from "../shared/interfaces/usuario.interface";
 export class AuthService{
     mostrarMenu = new EventEmitter();
 
+    usuarioAutenticado:boolean = false;
+
     fazerLogin(usuario:Usuario){
         if (usuario.nome == 'william' && usuario.senha == 'masterkey'){
-            console.log('Usuario correto');
-            this.mostrarMenu.emit(true);
+            this.usuarioAutenticado = true;
+            this.mostrarMenu.emit(this.usuarioAutenticado);
             return true
         }else{
-            this.mostrarMenu.emit(false);
+            this.usuarioAutenticado = false;
+            this.mostrarMenu.emit(this.usuarioAutenticado);
             return false
         }
+    }
+
+    verificaUsuario(){
+        return this.usuarioAutenticado;
     }
 
 }

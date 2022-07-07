@@ -1,1 +1,1 @@
-Aplicar guardsRouter 
+Tratar erros do Resolve -> Não gostei

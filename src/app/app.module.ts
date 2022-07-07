@@ -15,6 +15,8 @@ import { LoadingComponent } from './shared/componentes/loading.component';
 import { LoadingInterceptor } from './service/interceptor.service';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth.guard';
+import { GuardsResolve } from './guards/guards.resolve';
 
 @NgModule({
   declarations: [
@@ -36,21 +38,21 @@ import { FormsModule } from '@angular/forms';
     RouterModule.forRoot([
       {
         path:'', // Raiz do projeto
-        redirectTo: 'home',
+        redirectTo: 'login',
         pathMatch: 'full'
       },{
-        path:'home',loadChildren: ()=>import('./core/home/home.module').then(m => m.HomeModule)
+        path:'home',loadChildren: ()=>import('./core/home/home.module').then(m => m.HomeModule),canActivate:[AuthGuard],resolve:{carros : GuardsResolve}
       },{
-        path:'veiculos',loadChildren: ()=>import('./core/veiculos/veiculos.module').then(m => m.VeiculosModule)
+        path:'veiculos',loadChildren: ()=>import('./core/veiculos/veiculos.module').then(m => m.VeiculosModule),canActivate:[AuthGuard]
       },
       {
-        path:'log',loadChildren: ()=>import('./core/log/log.module').then(m => m.LogModule)
+        path:'log',loadChildren: ()=>import('./core/log/log.module').then(m => m.LogModule),canActivate:[AuthGuard]
       },
       {
         path:'login',component:LoginComponent
       },
       {
-          path: '**',component:ErroComponent
+          path: '**',component:ErroComponent,canActivate:[AuthGuard]
       }
     ]),
     BrowserAnimationsModule

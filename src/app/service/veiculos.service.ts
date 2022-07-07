@@ -17,8 +17,6 @@ export class VeiculosService{
 
     constructor(private httpClient:HttpClient){}
 
-    
-
     getVeiculos():Observable<VeiculoInterface[]>{
         return this.httpClient.get<VeiculoInterface[]>(this.apiUrl+'veiculos');
     }

@@ -1,3 +1,8 @@
-<button (click)="emitir()" >Testando relação de pai e filho</button>
+<!-- <button (click)="emitir()" >Testando relação de pai e filho</button>
 
-<ng-content select=".teste"></ng-content>
+<ng-content select=".teste"></ng-content> -->
+<div>
+    <input [(ngModel)]="teste">
+    <button (click)="atualizarValor()">Atualizar</button>
+    <button (click)="pegarValor()">Pegar Valor</button>
+</div>

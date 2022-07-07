@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Input } from "@angular/core";
 import { finalize, tap } from "rxjs";
+import { AuthService } from "src/app/service/auth.service";
 import { VeiculosService } from "src/app/service/veiculos.service";
 
 @Component({
@@ -8,12 +9,14 @@ import { VeiculosService } from "src/app/service/veiculos.service";
 })
 
 export class TestesComponent{
-    constructor(private http:HttpClient,private veiculoService:VeiculosService){
-
+    constructor(private http:HttpClient,
+        private veiculoService:VeiculosService,
+        private authService:AuthService){
     }
 
-    resultadoApiPython = '';
+    logado = this.authService.usuarioAutenticado;
 
+    resultadoApiPython = '';
 
     testePipe(){ // Pipe Prepara o Observable para mais funções ou tarefas quando for realizada um subscription / examples: map, filter ... 
         this.veiculoService.getVeiculos().pipe(
