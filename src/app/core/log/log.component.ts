@@ -11,7 +11,7 @@ export class LogComponent implements OnInit{
     constructor(private veiculoService:VeiculosService, private activatedRoute:ActivatedRoute){}
     id:number = 0;
 
-    carro!:VeiculoInterface; 
+    carro!:VeiculoInterface;
 
     logs: LogInterface[] = [];
 
@@ -61,6 +61,8 @@ export class LogComponent implements OnInit{
                 console.log(results);
             },error:(erro)=>{
                 console.log(erro);
+            },complete:()=>{
+              this.getLog();
             }
          })
 
@@ -74,9 +76,6 @@ export class LogComponent implements OnInit{
             obs:'',
             carro_id:this.id
         }
-
-         this.getLog();
-
     }
 
 }
