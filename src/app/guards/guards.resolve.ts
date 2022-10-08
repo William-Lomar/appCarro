@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
-import { VeiculosService } from "../service/veiculos.service";
+import { VeiculosService } from "../service/veiculos/veiculos.service";
 import { VeiculoInterface } from "../shared/interfaces/veiculo.interface";
 
 

@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { VeiculoInterface } from "../shared/interfaces/veiculo.interface";
-import { LogInterface } from "../shared/interfaces/log.interface";
+import { VeiculoInterface } from "../../shared/interfaces/veiculo.interface";
+import { LogInterface } from "../../shared/interfaces/log.interface";
 
 @Injectable({
     providedIn:'root'
@@ -11,7 +11,7 @@ export class VeiculosService{
     private apiUrl: string = 'http://localhost:3100/api/';
     httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type':'application/json', 
+            'Content-Type':'application/json',
         })
     }
 

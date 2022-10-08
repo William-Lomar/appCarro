@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, Input } from "@angular/core";
 import { finalize, tap } from "rxjs";
-import { AuthService } from "src/app/service/auth.service";
-import { VeiculosService } from "src/app/service/veiculos.service";
+import { AuthService } from "src/app/service/auth/auth.service";
+import { VeiculosService } from "src/app/service/veiculos/veiculos.service";
 
 @Component({
     templateUrl: './testes.component.html'
@@ -18,7 +18,7 @@ export class TestesComponent{
 
     resultadoApiPython = '';
 
-    testePipe(){ // Pipe Prepara o Observable para mais funções ou tarefas quando for realizada um subscription / examples: map, filter ... 
+    testePipe(){ // Pipe Prepara o Observable para mais funções ou tarefas quando for realizada um subscription / examples: map, filter ...
         this.veiculoService.getVeiculos().pipe(
             tap(
                 {

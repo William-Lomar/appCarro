@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 })
 export class loadingService{
     private loadingSubject = new BehaviorSubject<boolean>(false);
-    
+
     loading$: Observable<boolean> = this.loadingSubject.asObservable()
 
     hide():void{
@@ -15,5 +15,9 @@ export class loadingService{
 
     show():void{
         this.loadingSubject.next(true);
+    }
+
+    getUser(){
+      return "William";
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AlertModalService } from "src/app/service/alert-model.service";
-import { VeiculosService } from "src/app/service/veiculos.service";
+import { VeiculosService } from "src/app/service/veiculos/veiculos.service";
 import { VeiculoInterface } from "src/app/shared/interfaces/veiculo.interface";
 
 @Component({
@@ -14,7 +14,7 @@ export class EditarComponent implements OnInit{
     id:number = 0;
 
     constructor(private veiculosService:VeiculosService, private activedRoute:ActivatedRoute, private alertService:AlertModalService){}
-    
+
     ngOnInit(): void {
         this.activedRoute.params.subscribe(
             (params:any)=>{

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { VeiculosService } from "../../service/veiculos.service";
+import { VeiculosService } from "../../service/veiculos/veiculos.service";
 import { VeiculoInterface } from "src/app/shared/interfaces/veiculo.interface";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { AlertModalService } from "src/app/service/alert-model.service";
@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 export class HomeComponent implements OnInit{
     carros: VeiculoInterface[] = [];
-    bsModalRef!: BsModalRef; 
+    bsModalRef!: BsModalRef;
     results = {
         carros:[]
     };

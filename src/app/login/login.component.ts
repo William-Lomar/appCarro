@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from "../service/auth.service";
+import { AuthService } from "../service/auth/auth.service";
 import { Usuario } from "../shared/interfaces/usuario.interface";
 
 
@@ -18,7 +18,7 @@ export class LoginComponent{
     constructor(
         private authService:AuthService,
         private router:Router
-    ){} 
+    ){}
 
     logar(){
         if(this.authService.fazerLogin(this.usuario)){

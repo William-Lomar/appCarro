@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { EMPTY, Subject, switchMap, take } from "rxjs";
 import { AlertModalService } from "src/app/service/alert-model.service";
-import { VeiculosService } from "src/app/service/veiculos.service";
+import { VeiculosService } from "src/app/service/veiculos/veiculos.service";
 import { ConfirmComponent } from "src/app/shared/alerts/confirm.component";
 import { VeiculoInterface } from "src/app/shared/interfaces/veiculo.interface";
 
@@ -19,28 +19,26 @@ export class VeiculosComponent implements OnInit{
 
     constructor(private veiculoService:VeiculosService,
           private fb:FormBuilder,
-          private router:Router,
           private alertService:AlertModalService,
-          private modalService:BsModalService,
           ){
         this.userForm = this.fb.group({
             id:0,
             marca:'',
-            placa:'' 
+            placa:''
         })
-    }  
+    }
 
     results : object = {};
 
     carros:VeiculoInterface[] = [];
-    
+
     ngOnInit(): void {
         // this.router.navigate(['/']); -> redireciona para a rota desejada
 
         // this.userForm.patchValue({ -> Seta os valores do formulario
         //     id:0,
         //     marca:'',
-        //     placa:'' 
+        //     placa:''
         // })
 
         this.getAll();
@@ -62,7 +60,7 @@ export class VeiculosComponent implements OnInit{
     }
 
     confirmExcluir(id:number){
-        const result$ = this.alertService.confirmAlert(); 
+        const result$ = this.alertService.confirmAlert();
         result$.subscribe((result)=>{
             if(result){
                 this.ExcluirCarro(id)

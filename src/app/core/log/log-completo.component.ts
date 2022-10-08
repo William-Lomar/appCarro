@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { VeiculosService } from "src/app/service/veiculos.service";
+import { VeiculosService } from "src/app/service/veiculos/veiculos.service";
 import { LogInterface } from "src/app/shared/interfaces/log.interface";
 import { VeiculoInterface } from "src/app/shared/interfaces/veiculo.interface";
 
@@ -13,7 +13,7 @@ export class logCompletoComponent implements OnInit{
 
     id:number = 0;
 
-    carro!:VeiculoInterface; 
+    carro!:VeiculoInterface;
 
     logs: LogInterface[] = [];
 
